@@ -29,6 +29,13 @@ public class ScreenSlidePagerActivity extends FragmentActivity {
                 super.getLifecycle());
         mPager.setAdapter(pagerAdapter);
         Amplitude.getInstance().initialize(this, "c5ada5cb39ebb283e5255b17643c98d0").enableForegroundTracking(getApplication());
+        mPager.registerOnPageChangeCallback(new ViewPager2.OnPageChangeCallback() {
+            @Override
+            public void onPageSelected(int position) {
+                super.onPageSelected(position);
+                Amplitude.getInstance().logEvent("VIEW_PAGE_" + position);
+            }
+        });
     }
 
     /**
