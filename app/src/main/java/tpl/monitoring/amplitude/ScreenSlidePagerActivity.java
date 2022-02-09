@@ -12,6 +12,9 @@ import androidx.viewpager2.widget.ViewPager2;
 
 import com.amplitude.api.Amplitude;
 
+import org.json.JSONException;
+import org.json.JSONObject;
+
 import tpl.monitoring.amplitude.ui.main.ScreenSlidePageFragment;
 
 public class ScreenSlidePagerActivity extends FragmentActivity {
@@ -33,7 +36,12 @@ public class ScreenSlidePagerActivity extends FragmentActivity {
             @Override
             public void onPageSelected(int position) {
                 super.onPageSelected(position);
-                Amplitude.getInstance().logEvent("VIEW_PAGE_" + position);
+                try {
+                    JSONObject bundle = new JSONObject().put("page", position);
+                    Amplitude.getInstance().logEvent("pageEvent", bundle);
+                } catch (JSONException err) {
+                    System.err.println("Failed to create Amplitude event bundle.");
+                }
             }
         });
     }
