@@ -10,6 +10,8 @@ import androidx.lifecycle.Lifecycle;
 import androidx.viewpager2.adapter.FragmentStateAdapter;
 import androidx.viewpager2.widget.ViewPager2;
 
+import com.amplitude.api.Amplitude;
+
 import tpl.monitoring.amplitude.ui.main.ScreenSlidePageFragment;
 
 public class ScreenSlidePagerActivity extends FragmentActivity {
@@ -26,6 +28,7 @@ public class ScreenSlidePagerActivity extends FragmentActivity {
         FragmentStateAdapter pagerAdapter = new ScreenSlidePagerAdapter(getSupportFragmentManager(),
                 super.getLifecycle());
         mPager.setAdapter(pagerAdapter);
+        Amplitude.getInstance().initialize(this, "c5ada5cb39ebb283e5255b17643c98d0").enableForegroundTracking(getApplication());
     }
 
     /**
