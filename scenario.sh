@@ -1,7 +1,7 @@
 #!/bin/bash
 
-PACKAGE="tpl.monitoring.template"
-ACTIVITY="tpl.monitoring.template.ScreenSlidePagerActivity"
+PACKAGE="tpl.monitoring.amplitude"
+ACTIVITY="tpl.monitoring.amplitude.ScreenSlidePagerActivity"
 
 # Launch app
 adb shell am start -n $PACKAGE/$ACTIVITY

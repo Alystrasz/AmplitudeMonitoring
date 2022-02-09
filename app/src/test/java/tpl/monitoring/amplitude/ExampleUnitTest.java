@@ -1,4 +1,4 @@
-package tpl.monitoring.template;
+package tpl.monitoring.amplitude;
 
 import org.junit.Test;
 
